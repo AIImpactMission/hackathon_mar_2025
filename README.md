@@ -4,29 +4,23 @@ Repository for the AIM Hackathon together with Media Innovation Lab on 22.03.202
 <br>
 
 
-## Set up OpenAI API Key
+## Jump start
+### Fork this repository
+Simply fork this repository to start working on your project.
+
+### Add data
+Download data via the private link in the slack channel.
+
+Place the `data` folder in this repository.
+
+## Set up LLM API Keys
 Copy your teams API key from the [slack]("TODO") channel description and place it in the `.env_template` file.
 
 Don't forget to replace the filename to `.env` afterwards!
 
 Check out the [sample code](notebooks/llm_rag_demo.ipynb) to see how to load the key.
 
-Check out OpenAI pricing here: https://openai.com/api/pricing/
-
-*TODO*: Maybe update with OpenRouter overview?
-
-<br>
-
-
-## About the data
-TODO
-
-<br>
-
-
-## Jump start
-### Fork this repository
-Simply fork this repository to start working on your project.
+You can also change the model in the `.env` file, see notes on available models [below](#change-model-to-use).
 
 ### Set up environment
 With [uv](https://docs.astral.sh/uv/getting-started/installation/):
@@ -70,3 +64,26 @@ tokenizer = tiktoken.get_encoding("o200k_base")  # for gpt 4o
 ```
 
 <br>
+
+## Change model to use
+
+Choose a model from OpenRouter's [model list](https://openrouter.ai/models) and place the model name in the `.env` file.
+
+We recommend a model of these (click on the link to obtain code to run the model, scroll down):
+
+| Name | MODEL_NAME                    | Cost | Comments    |
+| --- |------------------------------------| --- |-------------|
+| [OpenAI 4o](https://openrouter.ai/openai/gpt-4o) | `openai/gpt-4o`                    | 2.5$/M tokens | Recommended |
+| [OpenAI 4o-mini](https://openrouter.ai/openai/gpt-4o-mini) | `openai/gpt-4o-mini`               | 0.15$/M tokens |          |
+| [Google Gemini 2.0 Flash Lite](https://openrouter.ai/google/gemini-2.0-flash-lite-001) | `google/gemini-2.0-flash-lite-001` | 0.075$/M tokens |           |
+| [Anthropic Claude 3.7 Sonnet](https://openrouter.ai/anthropic/claude-3.7-sonnet) | `anthropic/claude-3.7-sonnet`      | $3/M tokens |           |
+
+
+
+Feel free to choose any model from these providers (advanced):
+- OpenAI: https://openrouter.ai/provider/openai
+- Google Vertex: https://openrouter.ai/provider/google-vertex
+- Anthropic: https://openrouter.ai/provider/anthropic
+- Mistral: https://openrouter.ai/provider/mistral
+- Perplexity: https://openrouter.ai/perplexity
+- Nebious: https://openrouter.ai/nebious (for deepseek R1, Qwen, Llama)
