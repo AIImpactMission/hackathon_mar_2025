@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 import os
 
@@ -8,6 +8,14 @@ def get_llm_client(**kwargs):
     return ChatOpenAI(
         openai_api_key=os.getenv("OPENROUTER_API_KEY"),
         openai_api_base="https://openrouter.ai/api/v1",
+        model_name=os.getenv("MODEL_NAME"),
+        **kwargs
+    )
+
+def get_gemini_llm_client(**kwargs):
+    return ChatOpenAI(
+        openai_api_key=os.getenv("GEMINI_API_KEY"),
+        openai_api_base="https://generativelanguage.googleapis.com/v1beta/openai/",
         model_name=os.getenv("MODEL_NAME"),
         **kwargs
     )
