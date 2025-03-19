@@ -1,33 +1,38 @@
-from openai import OpenAI
-
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, AzureOpenAIEmbeddings
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 import os
 
+### Openrouter LLM completions
 def get_llm_client(**kwargs):
     return ChatOpenAI(
         openai_api_key=os.getenv("OPENROUTER_API_KEY"),
         openai_api_base="https://openrouter.ai/api/v1",
-        model_name=os.getenv("MODEL_NAME"),
+        model_name=os.getenv("OPENROUTER_MODEL_NAME"),
         **kwargs
     )
 
+### Azure OpenAI Embeddings
+def get_azure_embeddings_client():
+    return AzureOpenAIEmbeddings(
+        model="text-embedding-3-large",
+        azure_endpoint=os.getenv("AZURE_ENDPOINT"),
+        openai_api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+        openai_api_version="2024-02-01",
+    )
+
+### Google Gemini
+# LLM completions
 def get_gemini_llm_client(**kwargs):
     return ChatOpenAI(
         openai_api_key=os.getenv("GEMINI_API_KEY"),
         openai_api_base="https://generativelanguage.googleapis.com/v1beta/openai/",
-        model_name=os.getenv("MODEL_NAME"),
+        model_name=os.getenv("GEMINI_MODEL_NAME"),
         **kwargs
     )
 
+# Embeddings
 def get_gemini_embeddings_client():
     return GoogleGenerativeAIEmbeddings(
-        google_api_key=os.getenv("OPENAI_API_KEY"),
+        google_api_key=os.getenv("GEMINI_API_KEY"),
         model="models/text-embedding-004",
-    )
-
-def get_openrouter_client(**kwargs):
-    return OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=os.getenv("OPENROUTER_API_KEY"),
     )
