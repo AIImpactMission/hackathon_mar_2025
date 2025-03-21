@@ -40,7 +40,7 @@ Copy your teams API key from the Slack channel description and place it in the `
 
 Don't forget to replace the filename to `.env` afterwards!
 
-Check out the [sample code](notebooks/getting_started_llms.ipynb) to see how to load the key.
+We prepared for you the LLM [providers clients](src/llm.py).
 
 Check out pricing on the OpenRouter model pages (see [below](#change-model-to-use))
 
@@ -52,15 +52,16 @@ Download data via the private link in the Slack channel.
 
 Place the downloaded zip in this repository.
 
-Unzip the data (we recommend to use 7zip or terminal, windows default extraction might be very slow):
+Unzip the data (we recommend to use python, 7zip or terminal, windows default extraction might be very slow):
 ```bash
-unzip data.zip
+uv run python -m zipfile -e data.zip . 
 ```
 
 
 The folder contains:
-- articles_clean: the cleaned articles (using [this script](notebooks/dataset.ipynb)) in json format
-- `metadata.csv`: metadata for the articles, including tags for topics created with zero-shot models (using [this script](notebooks/metadata.ipynb))
+- articles_clean: the cleaned articles (using [this script](notebooks/1_dataset.ipynb)) in json format
+- the number of articles is >80k, be careful even with simple operations, e.g. file browsing in IDE, it can be too slow
+- `metadata.csv`: metadata for the articles, including tags for topics created with zero-shot models (using [this script](notebooks/2_metadata.ipynb))
 
 > Note: Take the assigned tags with a grain of salt, they are not perfect as they are automatically created.
 
@@ -69,8 +70,8 @@ The folder contains:
 
 ## 5) Get started with developing
 - Collect ideas, goals and approaches
-- Check out and filter the data with [filter_dataset.ipynb](notebooks/filter_dataset.ipynb)
-- Once you created a subset, there is a simple RAG implementation to help you getting started: [getting_started_llms.ipynb](notebooks/getting_started_llms.ipynb).
+- Check out and filter the data with [filter_dataset.ipynb](notebooks/3_filter_dataset.ipynb)
+- Once you created a subset, there is a simple RAG implementation to help you getting started: [getting_started_llms.ipynb](notebooks/4_getting_started_llms.ipynb).
 
 > Note: Feel free to diverge from this approach! This is just a starting point.
 
@@ -89,7 +90,7 @@ Info Material:
 
 
 Code samples:
-- Getting started notebook for this challenge (simple RAG pipeline): [llm_rag_demo.ipynb](notebooks/getting_started_llms.ipynb) 
+- Getting started notebook for this challenge (simple RAG pipeline): [llm_rag_demo.ipynb](notebooks/4_getting_started_llms.ipynb) 
 - RAG Techniques collection with sample code: [RAG Techniques GitHub](https://github.com/NirDiamant/RAG_Techniques)
 
 
