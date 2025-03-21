@@ -12,12 +12,12 @@ def get_llm_client(**kwargs):
     )
 
 ### Azure OpenAI Embeddings
-def get_azure_embeddings_client():
+def get_azure_embeddings_client(**kwargs):
     return AzureOpenAIEmbeddings(
-        model="text-embedding-3-large",
         azure_endpoint=os.getenv("AZURE_ENDPOINT"),
         openai_api_key=os.getenv("AZURE_OPENAI_API_KEY"),
         openai_api_version="2024-02-01",
+        **kwargs
     )
 
 ### Google Gemini
