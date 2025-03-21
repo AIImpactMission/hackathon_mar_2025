@@ -3,6 +3,7 @@ Repository for the AIM Hackathon "Put News Archives to Life" together with Media
 
 > Note: This repository should make the start easier for you, but is not mandatory to use - feel free to use your own setup!
 
+> If you get stuck, feel free to call us in the slack channel any time! :)
 
 
 ## 1) Fork this repository
@@ -49,12 +50,29 @@ Check out pricing on the OpenRouter model pages (see [below](#change-model-to-us
 ## 4) Add data
 Download data via the private link in the slack channel.
 
-Place the `data` folder in this repository.
+Place the downloaded zip in this repository.
+
+Unzip the data:
+```bash
+unzip data.zip
+```
+
+
+The folder contains:
+- articles_clean: the cleaned articles (using [this script](notebooks/dataset.ipynb)) in json format
+- `metadata.csv`: metadata for the articles, including tags for topics created with zero-shot models (using [this script](notebooks/metadata.ipynb))
+
+> Note: Take the assigned tags with a grain of salt, they are not perfect as they are automatically created.
 
 <br>
 
-## 5) Sample code
-There is a simple RAG implementation to help getting you started: [llm_rag_demo.ipynb](notebooks/getting_started_llms.ipynb).
+
+## 5) Get started with developing
+- Collect ideas, goals and approaches
+- Check out and filter the data with [filter_dataset.ipynb](notebooks/filter_dataset.ipynb)
+- Once you created a subset, there is a simple RAG implementation to help you getting started: [getting_started_llms.ipynb](notebooks/getting_started_llms.ipynb).
+
+> Note: Feel free to diverge from this approach! This is just a starting point.
 
 <br>
 
@@ -64,6 +82,7 @@ There is a simple RAG implementation to help getting you started: [llm_rag_demo.
 ### For the challenge
 Info Material:
 - Basics of RAG [blog post](https://medium.com/@ahmed.mohiuddin.architecture/using-ai-to-chat-with-your-documents-leveraging-langchain-faiss-and-openai-3281acfcc4e9)
+- RAG techniques and sample code [here]()
 - Force LLMs to output e.g. only integers with [Structured outputs](https://platform.openai.com/docs/guides/structured-outputs/introduction) (highly recommended)
 - Agentic AI introduction [blog post](https://www.anthropic.com/engineering/building-effective-agents)
 - Prompt caching to reduce token usage [blog post](https://platform.openai.com/docs/guides/prompt-caching)
@@ -85,7 +104,7 @@ tokenizer = tiktoken.get_encoding("o200k_base")  # for gpt 4o
 
 <br>
 
-## Change model to use
+## Change model to use (advanced)
 
 Choose a model from OpenRouter's [model list](https://openrouter.ai/models) and place the model name in the `.env` file.
 
